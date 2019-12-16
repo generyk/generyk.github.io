@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "               The Decision."
-date:       2019-12-16 21:07:50 +0000
+date:       2019-12-16 16:07:51 -0500
 permalink:  the_decision
 ---
 
