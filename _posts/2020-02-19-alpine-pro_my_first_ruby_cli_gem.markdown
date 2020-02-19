@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "**Alpine-Pro /// My First Ruby CLI Gem**"
-date:       2020-02-19 06:02:18 +0000
+date:       2020-02-19 01:02:19 -0500
 permalink:  alpine-pro_my_first_ruby_cli_gem
 ---
 
