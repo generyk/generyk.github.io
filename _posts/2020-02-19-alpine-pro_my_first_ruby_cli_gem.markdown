@@ -5,17 +5,17 @@ date:       2020-02-19 01:02:19 -0500
 permalink:  alpine-pro_my_first_ruby_cli_gem
 ---
 
-![](https://cdn.britannica.com/17/83817-050-67C814CD/Mount-Everest.jpghttp://)
+![](http://cdn.britannica.com/17/83817-050-67C814CD/Mount-Everest.jpg)
 
 Alpine-Pro, my first Ruby project. The purpose of it is to populate a list of potential expeditions the user may be interested in and give a description for the chosen option. Looking back on it, it was only fitting my gem was about mountains. Because this was one heck of a journey! An uphill climb, with many setbacks, doubts and struggles. However, just like reaching the summit of a mountain, I persevered and pushed on. I can honestly say that this one single project has taught me more about being a software engineer than anything else so far. It won't be easy, it'll be very frustrating and confusing at times, but man, is that feeling when you figure out your broken code and finally see your hard work come together worth it.
 
 I began my gem project by creating three classes and cooresponding files. A CLI/Controller class, a Scraper class, and an Expedition class. My next step was to create a basic outline of how I wanted my CLI to look. The purpose of this was for me to be able to just focus on my code and have one less thing to worry about. In addition, there is a sacred rule I live by: "Plan your work and work your plan." After this, I began working on my Scraper class. I wanted to make sure the website I chose was "scrapable". My original website was not, so I had to find a new one. This is why I chose to focus on my scraper first (and it payed off)! Here is my Scraper Class: 
 
-**-----------------------------------------------------------------------------------------------------------------------------------
-**
+**-----------------------------------------------------------------------------------------------------------------------------------**
+
 class AlpinePro::Scraper
   
-#scraping of expedition names and the url to be initialized with the expedition
+
   def self.scrape_expeditions 
     index_page = Nokogiri::HTML(open("https://www.adventureconsultants.com/expeditions/"))
     
@@ -27,7 +27,7 @@ class AlpinePro::Scraper
      end 
   end 
  
- #scraping of description from url it was initialized with 
+
   def self.scrape_description(expedition)
   description_page = Nokogiri::HTML(open("https://www.adventureconsultants.com"+ expedition))
   description_page.search("div#body-content").text.strip  
@@ -80,7 +80,7 @@ Here is the CLI:
 
   class AlpinePro::CLI 
   
-  #welcome method, calls on scraper to list expedition names
+  
     def start 
       puts ""
       puts "Welcome to Alpine-Pro!"
@@ -92,14 +92,14 @@ Here is the CLI:
       get_expedition
     end 
     
-  #list method turns the expeditions into a list with index 
+
     def list_expeditions
       AlpinePro::Expedition.all.each.with_index(1) do |expedition, index|
         puts "#{index}. #{expedition.name}"
       end 
     end 
     
-  #get method outputs the expedition list  and receives user input
+ 
     def get_expedition
       puts ""
       puts "////////////////////////////////////////////////////////////////"
@@ -119,7 +119,7 @@ Here is the CLI:
       end 
     end 
     
-    #description method receives the descriptions from the scraper class
+  
     def want_description(expedition)
       
       expedition.description = AlpinePro::Scraper.scrape_description(expedition.path)
